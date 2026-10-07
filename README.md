@@ -4,13 +4,13 @@ A mobile household clubhouse with chores, shared responsibilities, goals, a 64-r
 
 Published as a separate GitHub Pages project site. It does not change the account's portfolio or root Pages site.
 
-## Saving
+## Shared saving
 
-By default, household data saves on the current device in browser storage. The interface labels this clearly. Clearing website data can erase the local plan; download backups in Household settings.
+Both phones automatically use the same Google Sheets backend. No backend URL entry or Google sign-in is needed in the app. Device profiles remain independent. The sheet itself is private; the web endpoint runs under its deployer's Google account and is intentionally open, as requested. Anyone with the app URL can read and edit the household plan.
 
-To share one plan across two phones, deploy the included Google Apps Script bound to a private Google Sheet and enter the same Web App URL on each phone. See [setup instructions](backend/SETUP.html). This integration is prepared but has not been deployed or verified against a live Google account. No GitHub token or Google credential is shipped to visitors.
+Shared writes check revision numbers and reject stale updates. The app caches the last plan for offline reading; shared editing requires a connection. Existing device-only plans are retained as backups and can be downloaded in Household settings.
 
-The first device seeds an empty backend; the second loads its plan. Existing independent plans are not merged. Shared writes check revision numbers and reject stale updates. Profile choice stays per device.
+The backend is deployed and verified with unauthenticated read/write, exact data readback, invalid-payload handling, and conflict detection. The app contains its public endpoint, with no Google OAuth token or account credentials.
 
 ## iPhone
 
